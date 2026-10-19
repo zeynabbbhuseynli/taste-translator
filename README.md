@@ -4,8 +4,6 @@
 
 A visual room planning prototype that helps people bring different decorating tastes together, find common ground, and make decisions within a shared budget.
 
-![A little inspiration for a shared space](public/photos/shared-dorm.jpg)
-
 ## The story behind it
 
 Growing up, I shared one room with my three siblings, including my brother. Four kids, one room, and four different ideas of what it should look like.
