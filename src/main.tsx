@@ -1,0 +1,6 @@
+import {createRoot} from 'react-dom/client';
+import App from '../components/planner-app';
+import {WorkspaceScope} from '../components/workspace-scope';
+import '../styles/globals.css';
+function Privacy(){return <main style={{maxWidth:720,margin:'48px auto',padding:24}}><a href="/">Back to Taste Translator</a><h1>Your room. Your choices.</h1><p>This public demo stores your room, votes, profiles and avatar choices in this browser only. There is no account, cloud backup or shared editing. Other people using this same browser can see its saved plan. Clear this site's browser data to remove all saved information.</p><p>Pinterest boards are labeled samples. No account connection or AI service is active. Matching uses confirmed preferences and explainable rules. Budgets use deterministic calculations and estimated prices.</p><p>Room photo uploads are unavailable in this demo. The 3D preview uses your entered measurements, not a photo scan. Always check real world fit before buying. External inspiration image hosts receive normal image requests.</p><p>Taste Translator is independent of Pinterest. The siblings illustration tells the creator's story.</p></main>}
+createRoot(document.getElementById('root')!).render(<WorkspaceScope id="browser-demo">{location.pathname==='/privacy'?<Privacy/>:<App/>}</WorkspaceScope>);

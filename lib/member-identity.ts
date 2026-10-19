@@ -1,0 +1,7 @@
+export type AvatarStyle={skin:string;hair:string;cut:string;shirt:string;accessory:string};
+const colors=['#9ead8d','#b6a3be','#d3a16f','#8da9b4','#c6a4a0','#b4b879'];
+function generatedColor(n:number){const h=(n*137.508)%360,s=.28,l=.64;const a=s*Math.min(l,1-l);const f=(v:number)=>{const k=(v+h/30)%12;return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1)))).toString(16).padStart(2,'0')};return '#'+f(0)+f(8)+f(4)}
+export function defaultAvatar(n:number):AvatarStyle{return {skin:['#c68e69','#e0b397','#946344','#f2d4bc','#593b2f'][n%5],hair:['#292126','#5e4030','#292126','#a85c42','#5e4030'][n%5],cut:['Long','Short','Curly'][n%3],shirt:colors[n]||generatedColor(n),accessory:['None','Glasses','Earrings','Headband'][n%4]};}
+export function distinctAvatars(count:number,existing:AvatarStyle[]=[]):AvatarStyle[]{const used=new Set<string>();return Array.from({length:count},(_,n)=>{let look={...(existing[n]||defaultAvatar(n))};if(used.has(look.shirt.toLowerCase())){let variant=n;while(used.has(defaultAvatar(variant).shirt.toLowerCase()))variant++;look={...defaultAvatar(variant),skin:look.skin,hair:look.hair};}used.add(look.shirt.toLowerCase());return look;});}
+export function displayName(name:string){const clean=name.trim();return clean?clean[0].toLocaleUpperCase()+clean.slice(1):'You';}
+export function roomPeopleLabel(names:string[]){const cleaned=names.map(displayName);return (cleaned.length>1?cleaned.slice(0,-1).join(', ')+' & '+cleaned[cleaned.length-1]:cleaned[0]||'Your')+'’s room';}
